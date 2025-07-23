@@ -1,18 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
+    <meta charset="UTF-8" />
     <title>AG Química Visual Builder</title>
     <script src="https://unpkg.com/@mirohq/websdk"></script>
     <script defer src="script.js"></script>
     <style>
       body {
-        font-family: sans-serif;
-        padding: 20px;
+        font-family: 'Segoe UI', sans-serif;
+        padding: 30px;
+        background-color: #f9f9f9;
+      }
+
+      h1 {
+        font-size: 24px;
+        color: #222;
+      }
+
+      button {
+        background-color: #00bfa6;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 6px;
+        margin-top: 20px;
+      }
+
+      button:hover {
+        background-color: #009e88;
       }
     </style>
   </head>
   <body>
-    <h1>Construir visualización de AG Química</h1>
+    <h1>Construcción Visual: AG Química</h1>
+    <p>Haz clic en el botón para visualizar las fases del proyecto.</p>
     <button id="createWidgets">Crear Roadmap</button>
   </body>
 </html>
