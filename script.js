@@ -1,61 +1,61 @@
-const widgets = {
-  "widgets": [
-    {
-      "type": "shape",
-      "x": 0,
-      "y": 0,
-      "text": "🔷 Fase 1: Diagnóstico",
-      "style": {
-        "shapeType": "rectangle",
-        "backgroundColor": "#e1ecf4",
-        "textAlign": "center"
-      },
-      "width": 400,
-      "height": 100
-    },
-    {
-      "type": "shape",
-      "x": 0,
-      "y": 150,
-      "text": "✅ Auditoría de procesos\n✅ Evaluación de herramientas\n✅ Detección de oportunidades",
-      "style": {
-        "shapeType": "round_rectangle",
-        "backgroundColor": "#d5f5e3",
-        "textAlign": "left"
-      },
-      "width": 400,
-      "height": 150
-    },
-    {
-      "type": "shape",
-      "x": 500,
-      "y": 0,
-      "text": "🔷 Fase 2: Implementación",
-      "style": {
-        "shapeType": "rectangle",
-        "backgroundColor": "#fdebd0",
-        "textAlign": "center"
-      },
-      "width": 400,
-      "height": 100
-    },
-    {
-      "type": "shape",
-      "x": 500,
-      "y": 150,
-      "text": "⚙️ Automatización\n🧩 Desarrollo de Software\n📊 Tableros de control",
-      "style": {
-        "shapeType": "round_rectangle",
-        "backgroundColor": "#fcf3cf",
-        "textAlign": "left"
-      },
-      "width": 400,
-      "height": 150
-    }
-    // Aquí puedes agregar más elementos si gustas, te puedo ayudar con eso.
-  ]
-};
+document.getElementById('createWidgets').addEventListener('click', async () => {
+  console.log("Creando roadmap…");
 
-document.getElementById("createWidgets").addEventListener("click", async () => {
-  await miro.board.widgets.create(widgets.widgets);
+  await miro.board.widgets.create([
+    {
+      type: 'shape',
+      text: '🔍 Inicio: AG Química',
+      x: 0,
+      y: 0,
+      style: {
+        shapeType: 'rectangle',
+        backgroundColor: '#FFE066',
+        fontSize: 24,
+      },
+    },
+    {
+      type: 'shape',
+      text: '📲 Fase 1: Digitalización de procesos\n- Página web\n- Catálogo en línea\n- Cotizador interno',
+      x: 0,
+      y: 180,
+      style: {
+        shapeType: 'rectangle',
+        backgroundColor: '#A0E7E5',
+        fontSize: 16,
+      },
+    },
+    {
+      type: 'shape',
+      text: '⚙️ Fase 2: Automatización operativa\n- Gestión contable (Odoo)\n- CRM interno\n- Flujo de validación de cotizaciones',
+      x: 0,
+      y: 360,
+      style: {
+        shapeType: 'rectangle',
+        backgroundColor: '#B4F8C8',
+        fontSize: 16,
+      },
+    },
+    {
+      type: 'shape',
+      text: '🛒 Fase 3: Plataforma de marketplace\n- Productos propios + de proveedores\n- Membresías premium\n- Beneficios por tipo de usuario',
+      x: 0,
+      y: 540,
+      style: {
+        shapeType: 'rectangle',
+        backgroundColor: '#FFAEBC',
+        fontSize: 16,
+      },
+    },
+    {
+      type: 'shape',
+      text: '🚀 Resultado: AG Química 100% escalable, automatizada y posicionada como líder',
+      x: 0,
+      y: 720,
+      style: {
+        shapeType: 'rectangle',
+        backgroundColor: '#D2B4DE',
+        fontSize: 20,
+      },
+    },
+  ]);
 });
