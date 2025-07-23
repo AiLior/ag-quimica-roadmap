@@ -1,23 +1,27 @@
 document.getElementById('createWidgets').addEventListener('click', async () => {
-  console.log("Creando roadmap…");
+  console.log("Visualizando roadmap...");
 
-  await miro.board.widgets.create([
+  const xStart = 0;
+  const yLevel = 0;
+  const gap = 450;
+
+  const shapes = [
     {
       type: 'shape',
-      text: '🔍 Inicio: AG Química',
-      x: 0,
-      y: 0,
+      text: '🧭 Inicio del proyecto\nAnálisis, diagnóstico, objetivos',
+      x: xStart,
+      y: yLevel,
       style: {
         shapeType: 'rectangle',
         backgroundColor: '#FFE066',
-        fontSize: 24,
+        fontSize: 16,
       },
     },
     {
       type: 'shape',
-      text: '📲 Fase 1: Digitalización de procesos\n- Página web\n- Catálogo en línea\n- Cotizador interno',
-      x: 0,
-      y: 180,
+      text: '📲 Fase 1: Digitalización\n- Página web\n- Catálogo digital\n- Cotizador en línea',
+      x: xStart + gap,
+      y: yLevel,
       style: {
         shapeType: 'rectangle',
         backgroundColor: '#A0E7E5',
@@ -26,9 +30,9 @@ document.getElementById('createWidgets').addEventListener('click', async () => {
     },
     {
       type: 'shape',
-      text: '⚙️ Fase 2: Automatización operativa\n- Gestión contable (Odoo)\n- CRM interno\n- Flujo de validación de cotizaciones',
-      x: 0,
-      y: 360,
+      text: '⚙️ Fase 2: Automatización\n- CRM interno\n- Odoo contabilidad\n- Flujo validación cotizaciones',
+      x: xStart + gap * 2,
+      y: yLevel,
       style: {
         shapeType: 'rectangle',
         backgroundColor: '#B4F8C8',
@@ -37,9 +41,9 @@ document.getElementById('createWidgets').addEventListener('click', async () => {
     },
     {
       type: 'shape',
-      text: '🛒 Fase 3: Plataforma de marketplace\n- Productos propios + de proveedores\n- Membresías premium\n- Beneficios por tipo de usuario',
-      x: 0,
-      y: 540,
+      text: '🛒 Fase 3: Marketplace\n- Productos propios y de proveedores\n- Membresías premium\n- Subscripción compradores',
+      x: xStart + gap * 3,
+      y: yLevel,
       style: {
         shapeType: 'rectangle',
         backgroundColor: '#FFAEBC',
@@ -48,14 +52,65 @@ document.getElementById('createWidgets').addEventListener('click', async () => {
     },
     {
       type: 'shape',
-      text: '🚀 Resultado: AG Química 100% escalable, automatizada y posicionada como líder',
-      x: 0,
-      y: 720,
+      text: '🚀 Resultado\nAG Química escalable, automatizada y posicionada',
+      x: xStart + gap * 4,
+      y: yLevel,
       style: {
         shapeType: 'rectangle',
         backgroundColor: '#D2B4DE',
-        fontSize: 20,
+        fontSize: 16,
       },
     },
-  ]);
+  ];
+
+  // Conexiones visuales entre fases
+  const lines = [
+    {
+      type: 'line',
+      startWidgetId: null, // Lo asignamos después de crear los shapes
+      endWidgetId: null,
+      style: {
+        lineColor: '#888',
+        lineEndStyle: 'arrow',
+      },
+    },
+    {
+      type: 'line',
+      startWidgetId: null,
+      endWidgetId: null,
+      style: {
+        lineColor: '#888',
+        lineEndStyle: 'arrow',
+      },
+    },
+    {
+      type: 'line',
+      startWidgetId: null,
+      endWidgetId: null,
+      style: {
+        lineColor: '#888',
+        lineEndStyle: 'arrow',
+      },
+    },
+    {
+      type: 'line',
+      startWidgetId: null,
+      endWidgetId: null,
+      style: {
+        lineColor: '#888',
+        lineEndStyle: 'arrow',
+      },
+    },
+  ];
+
+  // Crear primero los rectángulos
+  const createdShapes = await miro.board.widgets.create(shapes);
+
+  // Luego agregamos las líneas conectando cada fase
+  lines.forEach((line, index) => {
+    line.startWidgetId = createdShapes[index].id;
+    line.endWidgetId = createdShapes[index + 1].id;
+  });
+
+  await miro.board.widgets.create(lines);
 });
